@@ -10,7 +10,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/ptkio/directus-extension-theme-clean-compact-light.git"
+		"url": "git+https://github.com/ptkio/directus-extension-group-layout-sidebar.git"
 	},
 	"keywords": [
 		"directus",
