@@ -5,8 +5,8 @@ import LayoutSVG from './assets/layout.svg';
 
 export default defineInterface({
 	id: 'ptkio-group-layout',
-	name: 'Group Layout',
-	icon: 'menu_open',
+	name: 'Group layout sidebar',
+	icon: 'web',
 	hideLabel: true,
 	description: 'Group layout with sidebar',
 	component: InterfaceComponent,
