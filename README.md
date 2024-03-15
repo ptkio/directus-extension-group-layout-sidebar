@@ -1,7 +1,7 @@
 # Group layout sidebar interface for Directus
 Group layout sidebar is an interface for Directus that provides field organization with a docked sidebar.
 
-![](./screenshots/main.png)
+![](https://raw.githubusercontent.com/ptkio/directus-extension-group-layout-sidebar/main/screenshots/main.png)
 
 ## Layout Organization
 You have 5 available sections:
@@ -14,7 +14,7 @@ You have 5 available sections:
 
 All sections have a small spacing between them to differentiate each one.
 
-![](./src/assets/layout.svg)
+![](https://raw.githubusercontent.com/ptkio/directus-extension-group-layout-sidebar/main/src/assets/layout.svg)
 
 ### It's Mobile-Friendly
 In responsive scenarios, such as on mobile devices or in a drawer layout, the sidebar will be positioned after the "Top" layout group.
@@ -44,9 +44,13 @@ This is the first release.
 
 Please feel free to report any bugs or suggestions, and I will look into addressing them.
 
+## Recommended extension
+**Compact Theme:**
+https://github.com/ptkio/directus-extension-theme-clean-compact-light
+
 ## Screenshots:
 #### Example 1: The user form
-![Example 1: user form](./screenshots/example_form.png)
+![Example 1: user form](https://raw.githubusercontent.com/ptkio/directus-extension-group-layout-sidebar/main/screenshots/example_form.png)
 
 #### Example 2: The settings form
-![Example 2: settings form](./screenshots/example_settings.png)
+![Example 2: settings form](https://raw.githubusercontent.com/ptkio/directus-extension-group-layout-sidebar/main/screenshots/example_settings.png)
