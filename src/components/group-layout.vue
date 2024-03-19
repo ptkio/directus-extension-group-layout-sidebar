@@ -3,12 +3,28 @@ const props = withDefaults(
 	defineProps<{
 		sections: string[];
 		layout: 'layout' | 'layout-center';
+		layoutFields: Field[];
 	}>(),
 	{
 		sections: ['top', 'content', 'aside', 'before', 'after'],
 		layout: 'layout',
+		layoutFields: [],
 	},
 );
+const groupClasses = (groupName: string): string[] => {
+	const baseClass = `group-layout-${groupName}`;
+	const field = props.layoutFields.find((field) => field.meta?.options?.layout_part === groupName);
+
+	const appearanceClasses = [];
+	if (field?.meta?.options?.background) {
+		appearanceClasses.push('group-layout-with-' + field.meta.options.background);
+	}
+	if (field?.meta?.options?.border) {
+		appearanceClasses.push('group-layout-with-' + field.meta.options.border);
+	}
+
+	return [baseClass, ...appearanceClasses];
+};
 
 const hasSection = (name: string): boolean => props.sections.includes(name);
 
@@ -17,13 +33,13 @@ const hasAnySection = (names: string[]): boolean => names.some((name) => hasSect
 
 <template>
 	<div :class="{ 'group-layout': true, 'group-layout-centered': layout === 'layout-center' }">
-		<div class="group-layout-aside" v-if="hasSection('aside')">
+		<div :class="groupClasses('aside')" v-if="hasSection('aside')">
 			<slot name="group-layout-aside" />
 		</div>
 
 		<div class="group-layout-main" v-if="hasSection('top')">
 			<div class="center">
-				<div class="group-layout-top">
+				<div :class="groupClasses('top')">
 					<slot name="group-layout-top" />
 				</div>
 			</div>
@@ -31,14 +47,14 @@ const hasAnySection = (names: string[]): boolean => names.some((name) => hasSect
 
 		<div class="group-layout-main" v-if="hasAnySection(['before', 'content', 'after'])">
 			<div class="center">
-				<div class="group-layout-before" v-if="hasSection('before')">
-					<slot name="group-layout-before-content" />
+				<div :class="groupClasses('before')" v-if="hasSection('before')">
+					<slot name="group-layout-before" />
 				</div>
-				<div class="group-layout-content" v-if="hasSection('content')">
+				<div :class="groupClasses('content')" v-if="hasSection('content')">
 					<slot name="group-layout-content" />
 				</div>
-				<div class="group-layout-after" v-if="hasSection('after')">
-					<slot name="group-layout-after-content" />
+				<div :class="groupClasses('after')" v-if="hasSection('after')">
+					<slot name="group-layout-after" />
 				</div>
 			</div>
 		</div>
@@ -48,6 +64,36 @@ const hasAnySection = (names: string[]): boolean => names.some((name) => hasSect
 </template>
 
 <style scoped>
+.group-layout-with-border {
+	border-radius: var(--theme--border-radius);
+	border: var(--theme--border-width) solid var(--theme--border-color);
+	padding: calc(var(--content-padding) / 2);
+}
+.group-layout-with-border-accent {
+	border-radius: var(--theme--border-radius);
+	border: var(--theme--border-width) solid var(--theme--border-color-accent);
+	padding: calc(var(--content-padding) / 2);
+}
+.group-layout-with-border-subdued {
+	border-radius: var(--theme--border-radius);
+	border: var(--theme--border-width) solid var(--theme--border-color-subdued);
+	padding: calc(var(--content-padding) / 2);
+}
+.group-layout-with-background {
+	border-radius: var(--theme--border-radius);
+	background: var(--theme--background-normal);
+	padding: calc(var(--content-padding) / 2);
+}
+.group-layout-with-background-subdued {
+	border-radius: var(--theme--border-radius);
+	background: var(--theme--background-subdued);
+	padding: calc(var(--content-padding) / 2);
+}
+.group-layout-with-background-accent {
+	border-radius: var(--theme--border-radius);
+	background: var(--theme--background-accent);
+	padding: calc(var(--content-padding) / 2);
+}
 .group-layout {
 	width: 100%;
 	position: relative;
@@ -87,9 +133,6 @@ const hasAnySection = (names: string[]): boolean => names.some((name) => hasSect
 		float: right;
 		position: sticky;
 		top: 80px;
-		border: 1px solid var(--theme--navigation--background);
-		padding: 16px;
-		border-radius: var(--theme--border-radius);
 	}
 }
 

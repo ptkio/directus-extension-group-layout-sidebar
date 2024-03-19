@@ -60,6 +60,62 @@ export default defineInterface({
 			},
 		},
 		{
+			field: 'background',
+			name: 'Background color',
+			schema: {
+				default_value: '',
+			},
+			meta: {
+				width: 'half',
+				interface: 'select-dropdown',
+				options: {
+					allowNone: true,
+					choices: [
+						{
+							value: 'background',
+							text: 'Background',
+						},
+						{
+							value: 'background-accent',
+							text: 'Background (Accent)',
+						},
+						{
+							value: 'background-subdued',
+							text: 'Background (Subdued)',
+						},
+					],
+				},
+			},
+		},
+		{
+			field: 'border',
+			name: 'Border color',
+			schema: {
+				default_value: '',
+			},
+			meta: {
+				width: 'half',
+				interface: 'select-dropdown',
+				options: {
+					allowNone: true,
+					choices: [
+						{
+							value: 'border',
+							text: 'Border',
+						},
+						{
+							value: 'border-accent',
+							text: 'Border (Accent)',
+						},
+						{
+							value: 'border-subdued',
+							text: 'Border (Subdued)',
+						},
+					],
+				},
+			},
+		},
+		{
 			field: 'guide',
 			name: 'Information',
 			type: 'alias',

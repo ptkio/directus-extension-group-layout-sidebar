@@ -2,7 +2,7 @@
 	"name": "directus-extension-group-layout-sidebar",
 	"description": "Group layout sidebar is an interface for Directus that provides field organization with a docked sidebar.\n",
 	"icon": "web",
-	"version": "1.0.2",
+	"version": "1.1.0",
 	"license": "MIT",
 	"author": {
 		"email": "paul.tecchio@gmail.com",

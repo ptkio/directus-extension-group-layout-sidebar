@@ -49,7 +49,7 @@ const sections = computed(() => [...new Set(groupLayoutFields.value.map((field) 
 
 <template>
 	<div class="fill">
-		<GroupLayout :sections="sections" :layout="layout_part">
+		<GroupLayout :sections="sections" :layout-fields="groupLayoutFields" :layout="layout_part">
 			<template #group-layout-top>
 				<v-form
 					:initial-values="initialValues"
@@ -104,7 +104,7 @@ const sections = computed(() => [...new Set(groupLayoutFields.value.map((field) 
 					@update:model-value="$emit('apply', $event)"
 				/>
 			</template>
-			<template #group-layout-before-content>
+			<template #group-layout-before>
 				<v-form
 					:initial-values="initialValues"
 					:fields="fields"
@@ -122,7 +122,7 @@ const sections = computed(() => [...new Set(groupLayoutFields.value.map((field) 
 					@update:model-value="$emit('apply', $event)"
 				/>
 			</template>
-			<template #group-layout-after-content>
+			<template #group-layout-after>
 				<v-form
 					:initial-values="initialValues"
 					:fields="fields"
